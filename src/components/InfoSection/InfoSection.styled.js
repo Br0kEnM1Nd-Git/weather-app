@@ -8,6 +8,14 @@ const InfoSectionWrapper = styled.div`
   gap: 40px;
 `;
 
+const WeatherListWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+`;
+
 const WeatherCard = styled.ul`
   background-color: #f7dc6f;
   height: auto;
@@ -30,4 +38,4 @@ const WeatherCardItem = styled.li`
   }
 `;
 
-export { InfoSectionWrapper, WeatherCard, WeatherCardItem };
+export { InfoSectionWrapper, WeatherListWrapper, WeatherCard, WeatherCardItem };
