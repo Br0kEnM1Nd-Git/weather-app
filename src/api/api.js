@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-const BASE_GEOCODE_URL = 'http://api.openweathermap.org/geo/1.0/';
-const BASE_WEATHER_URL = 'http://api.openweathermap.org/data/2.5/';
+const BASE_GEOCODE_URL = 'https://api.openweathermap.org/geo/1.0/';
+const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/';
 const API_KEY = 'ab67645e8dc60ba4f1fe44d6c82b685e';
 axios.defaults.params = {
   appid: API_KEY,
