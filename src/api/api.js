@@ -23,23 +23,29 @@ class Api {
     Notiflix.Notify.failure(error.response.data.message);
   }
 
-  #getInfo(data) {}
-
-  async getGeocode(query) {
-    try {
-      const resp = await geocodeApi.get(`direct?q=${query}`);
-      const { name, lon, lat } = resp.data[0];
-      return { name, lon, lat };
-    } catch (error) {
-      this.#handleError();
-    }
+  #getInfo(data) {
+    const {
+      city: { name, country },
+      list,
+    } = data;
+    const weatherList = list.map(el => {
+      const {
+        dt_txt: date,
+        main: { feels_like: feelsLike, humidity, temp },
+        weather: [{ description: weatherDesc }],
+        wind: { speed: windSpeed },
+      } = el;
+      return { date, feelsLike, humidity, temp, weatherDesc, windSpeed };
+    });
+    return { name, country, weatherList };
   }
 
-  async getWeather(lat, lon) {
+  async getWeather(query) {
     try {
-      const resp = await weatherApi.get(`forecast?lat=${lat}&lon=${lon}`);
-      this.#getInfo(resp.data);
-      return resp.data;
+      const resp = await geocodeApi.get(`direct?q=${query}`);
+      const { lon, lat } = resp.data[0];
+      const response = await weatherApi.get(`forecast?lat=${lat}&lon=${lon}`);
+      return this.#getInfo(response.data);
     } catch (error) {
       this.#handleError();
     }
