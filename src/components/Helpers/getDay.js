@@ -1,15 +1,15 @@
 const getDay = i => {
   switch (i) {
     case 0:
-      return 'Today';
+      return 'Сьогодні';
     case 1:
-      return 'Tomorrow';
+      return 'Завтра';
     case 2:
-      return 'After tomorrow';
+      return 'Післязавтра';
     case 3:
-      return 'In 3 days';
+      return 'Через три дні';
     case 4:
-      return 'In 4 days';
+      return 'Через чотири дні';
     default:
       break;
   }

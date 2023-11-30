@@ -32,8 +32,8 @@ export const InfoSection = ({ weatherInfo }) => {
                 return (
                   <WeatherCardItem key={nanoid()}>
                     <p>{date}</p>
-                    <p>{`Feels like: ${feelsLike}°C. Humidity: ${humidity}%. Temperature: ${temp}°C.`}</p>
-                    <p>{`Weather: ${weatherDesc}. Wind speed: ${windSpeed}km/h`}</p>
+                    <p>{`Температура: ${temp}°C. Відчувається: ${feelsLike}°C. Вологість: ${humidity}%.`}</p>
+                    <p>{`Погода: ${weatherDesc}. Швидкість вітру: ${windSpeed} км/г`}</p>
                   </WeatherCardItem>
                 );
               })}
