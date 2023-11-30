@@ -9,8 +9,4 @@ const AppWrapper = styled.div`
   color: '#010101';
 `;
 
-const Div = styled.div``;
-
-const Ul = styled.ul``;
-
-export { AppWrapper, Div, Ul };
+export { AppWrapper };
