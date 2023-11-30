@@ -33,7 +33,7 @@ const WeatherCardItem = styled.li`
   padding: 5px;
   border-radius: 10px;
   &:not(:first-child):hover {
-    box-shadow: 0 0 5px 2px black;
+    box-shadow: 0 0 5px black;
     background-color: rgba(0, 155, 0, 0.5);
   }
 `;
