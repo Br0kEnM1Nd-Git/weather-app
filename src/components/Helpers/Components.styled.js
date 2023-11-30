@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-  height: '100vh';
-  display: 'flex';
-  justify-content: 'center';
-  align-items: 'center';
+  height: 100vh;
   font-size: 40px;
-  color: '#010101';
+  color: #010101;
 `;
 
 export { AppWrapper };

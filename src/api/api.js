@@ -20,24 +20,29 @@ const weatherApi = axios.create({
 
 class Api {
   #handleError(error) {
-    Notiflix.Notify.failure(error.response.data.message);
+    Notiflix.Notify.failure(error.message);
   }
 
   #getInfo(data) {
     const {
-      city: { name, country },
+      city: { name: city, country },
       list,
     } = data;
     const weatherList = list.map(el => {
       const {
         dt_txt: date,
-        main: { feels_like: feelsLike, humidity, temp },
-        weather: [{ description: weatherDesc }],
-        wind: { speed: windSpeed },
+        main: { feels_like: rawFeelsLike, humidity, temp: rawTemp },
+        weather: [{ description: rawWeatherDesc }],
+        wind: { speed: rawWindSpeed },
       } = el;
+      const feelsLike = Math.round(rawFeelsLike);
+      const temp = Math.round(rawTemp);
+      const windSpeed = (rawWindSpeed * 3.6).toFixed(1);
+      const weatherDesc =
+        rawWeatherDesc.charAt(0).toUpperCase() + rawWeatherDesc.slice(1);
       return { date, feelsLike, humidity, temp, weatherDesc, windSpeed };
     });
-    return { name, country, weatherList };
+    return { city, country, weatherList };
   }
 
   async getWeather(query) {
@@ -47,7 +52,7 @@ class Api {
       const response = await weatherApi.get(`forecast?lat=${lat}&lon=${lon}`);
       return this.#getInfo(response.data);
     } catch (error) {
-      this.#handleError();
+      this.#handleError(error);
     }
   }
 }
